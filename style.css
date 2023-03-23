@@ -2,6 +2,8 @@
 
 :root {
     --standard-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --main-background-color: #e5e7eb;
+    --add-book-btn-bc: #afb3b9;
 }
 
 * {
@@ -9,4 +11,52 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
+}
+
+.container {
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr 4fr 0.5fr;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    grid-row: 1;
+    box-shadow: var(--standard-box-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.add-book-container,
+main,
+footer {
+    background-color: var(--main-background-color);
+}
+
+.add-book-container {
+    grid-row: 2;
+    background-color: var(--main-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.add-book:hover {
+    background-color: var(--add-book-btn-bc);
+    cursor: pointer;
 }
