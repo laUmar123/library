@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 :root {
-    --standard-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --heading-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    --standard-card-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     --main-background-color: #e5e7eb;
     --add-book-btn-bc: #afb3b9;
+    --green-btn-bc: rgb(69, 250, 109);
+    --green-hover-btn-bc: rgb(4, 163, 38);
+    --red-btn-bc: rgb(252, 80, 80);
+    --red-hover-btn-bc: rgb(190, 4, 4);
 }
 
 * {
@@ -13,20 +18,24 @@
     font-family: 'Nunito', sans-serif;
 }
 
+.blur {
+    filter: blur(10px) brightness(0.5);
+}
+
 .container {
     min-height: 100dvh;
     display: grid;
     grid-template-rows: 0.5fr 0.5fr 4fr 0.5fr;
-    position: relative;
-    z-index: 1;
 }
 
 header {
     grid-row: 1;
-    box-shadow: var(--standard-box-shadow);
+    box-shadow: var(--heading-shadow);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
@@ -81,6 +90,7 @@ main {
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     gap: 1rem;
+    box-shadow: var(--standard-card-shadow);
 }
 
 .card h5 {
@@ -100,22 +110,89 @@ main {
     width: 100%;
 }
 
-.read {
-    background-color: rgb(69, 250, 109);
+.read,
+.book-submit {
+    background-color: var(--green-btn-bc);
 }
 
-.read:hover {
-    background-color: rgb(4, 163, 38);
+.read:hover,
+.book-submit:hover {
+    background-color: var(--green-hover-btn-bc);
 }
 
 .not-read {
-    background-color: rgb(252, 80, 80);
+    background-color: var(--red-btn-bc);
 }
 
 .not-read:hover {
-    background-color: rgb(190, 4, 4);
+    background-color: var(--red-hover-btn-bc);
 }
 
 .remove {
     background-color: var(--main-background-color);
+}
+
+.book-modal {
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: min-content;
+    width: 20rem;
+    background-color: var(--main-background-color);
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 33%;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    box-shadow: var(--standard-shadow);
+}
+
+.book-modal>h6 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+input[type="text"],
+input[type="number"] {
+    border: none;
+    padding: 0.5rem;
+    width: 90%;
+    height: 2.5rem;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.checkbox-for-book {
+    display: flex;
+    gap: 0.5rem;
+    font-weight: bold;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.book-submit {
+    width: 90%;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.book-modal>form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hide-display {
+    display: none;
 }
