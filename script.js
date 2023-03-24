@@ -90,3 +90,12 @@ bookModalSubmitBtn.addEventListener('click', function (e) {
     mainContainer.classList.toggle('blur'); //removes the blur from the page
     clearInputFields();
 });
+
+//if the user pressed "remove" the card is removed from the webpage
+main.addEventListener('click', function (e) {
+    //used event delegation to only require one addEventListener, anything within the main element that contains the class "remove" will only activate the eventListener
+    if (e.target.classList.contains('remove')) {
+        e.preventDefault();
+        e.target.parentElement.remove();  //removes the parent element of "remove" which would be the "card" element
+    }
+});
