@@ -36,3 +36,10 @@ function Book(title, author, pages, readOrNot) {
 function addBookToLibrary(book) {
     booksLibrary.push(book);
 }
+
+//"+ add book" button should open up a modal window 
+addBookBtn.addEventListener('click', function (e) {
+    e.preventDefault(); //prevents button from reloading the page
+    addBookModal.classList.toggle('hide-display'); //removes the .hide-display class that is added by default
+    mainContainer.classList.toggle('blur'); //adds the blur class to mainContainer so entire background is blurred and only the modal window appears normal
+});
