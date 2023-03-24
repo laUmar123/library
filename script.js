@@ -19,7 +19,7 @@ const booksLibrary = [];
  * @param {string} title - takes the name of the book
  * @param {string} author - takes the author's name
  * @param {number} pages - number of pages in the book
- * @param {string} readOrNot - takes a value of false or read 
+ * @param {string} readOrNot - takes a value of null or read 
  */
 function Book(title, author, pages, readOrNot) {
     this.title = title;
@@ -37,9 +37,56 @@ function addBookToLibrary(book) {
     booksLibrary.push(book);
 }
 
-//"+ add book" button should open up a modal window 
+/**
+ * this function generates a card element in the DOM to display information about the book
+ * 
+ * @param {object} book - an instance of the Book object
+ */
+function populateLibrary(book) {
+    //cardConent will be used to fill up the innerHTML of the element, and will populate it with information about the book
+    let cardContent = `
+        <h5>${book.title}</h5>
+        <h5>${book.author}</h5>
+        <h5>${book.pages}</h5>
+        <button class="${book.readOrNot === null ? `not-read` : `read`} btn">${book.readOrNot === null ? `Unread` : `Read`}</button>
+        <button class="remove btn">Remove</button>
+    `
+    let newBook = document.createElement('div');
+    newBook.classList.add('card');
+    newBook.innerHTML = cardContent;
+    main.append(newBook); //appends to the main element, so each a new entry goes after the old entries
+}
+
+/**
+ * clears the input fields of the modal window so its back to default
+ */
+function clearInputFields() {
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    numberOfPages.value = '';
+    isRead.checked = false;
+}
+
+//"+ add book" button opens up a modal window 
 addBookBtn.addEventListener('click', function (e) {
     e.preventDefault(); //prevents button from reloading the page
     addBookModal.classList.toggle('hide-display'); //removes the .hide-display class that is added by default
     mainContainer.classList.toggle('blur'); //adds the blur class to mainContainer so entire background is blurred and only the modal window appears normal
+});
+
+
+//when the user presses submit in the "add a book" modal window it adds the book to the webpage
+bookModalSubmitBtn.addEventListener('click', function (e) {
+    e.preventDefault(); //prevents page from reloading
+    //gets the user's input
+    let title = bookTitle.value;
+    let author = bookAuthor.value;
+    let pages = numberOfPages.value;
+    let bookRead = null; //by default the book is unread so its null
+    if (isRead.checked) bookRead = isRead.value; //but if the completed book option is checked the value changes to read
+    addBookToLibrary(new Book(title, author, pages, bookRead)); //creates a new instance of Book with the values collected and stores it into the array
+    populateLibrary(booksLibrary.at(-1)); //we want to populate the page with the last object as the other ones would have already been populated
+    addBookModal.classList.toggle('hide-display'); //closes the modal
+    mainContainer.classList.toggle('blur'); //removes the blur from the page
+    clearInputFields();
 });
