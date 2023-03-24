@@ -25,7 +25,7 @@
 .container {
     min-height: 100dvh;
     display: grid;
-    grid-template-rows: 0.5fr 0.5fr 4fr 0.5fr;
+    grid-template-rows: 0.5fr 0.5fr 4fr 0.3fr;
 }
 
 header {
@@ -195,4 +195,18 @@ input[type="checkbox"] {
 
 .hide-display {
     display: none;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer>p {
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
