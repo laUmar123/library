@@ -77,7 +77,6 @@ addBookBtn.addEventListener('click', function (e) {
 
 //when the user presses submit in the "add a book" modal window it adds the book to the webpage
 bookModalSubmitBtn.addEventListener('click', function (e) {
-    e.preventDefault(); //prevents page from reloading
     //gets the user's input
     let title = bookTitle.value;
     let author = bookAuthor.value;
@@ -97,5 +96,20 @@ main.addEventListener('click', function (e) {
     if (e.target.classList.contains('remove')) {
         e.preventDefault();
         e.target.parentElement.remove();  //removes the parent element of "remove" which would be the "card" element
+    }
+});
+
+//allows the user to switch between read or unread after they've pressed submit
+main.addEventListener('click', function (e) {
+    if (e.target.classList.contains('read')) { //if the button pressed contains the class "read" the event listener is fired
+        e.preventDefault();
+        e.target.classList.toggle('read');
+        e.target.classList.toggle('not-read');
+        e.target.innerHTML = "Unread";
+    } else if (e.target.classList.contains('not-read')) { //if the button pressed contains the class "not-read" the event listener is fired
+        e.preventDefault();
+        e.target.classList.toggle('not-read');
+        e.target.classList.toggle('read');
+        e.target.innerHTML = "Read";
     }
 });

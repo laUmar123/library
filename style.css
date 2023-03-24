@@ -134,7 +134,6 @@ main {
 
 .book-modal {
     padding: 1rem;
-    border: 1px solid black;
     border-radius: 10px;
     height: min-content;
     width: 20rem;

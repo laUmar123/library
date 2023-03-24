@@ -32,15 +32,15 @@
     </div>
     <div class="book-modal hide-display">
         <h6>Add book information!</h6>
-        <form action="#" method="post">
-            <input id="book-name" type="text" placeholder="Book Name" name="book-title" required />
-            <input id="author" type="text" placeholder="Author" name="book-author" required />
-            <input id="numOfPages" type="number" placeholder="Pages" name="number-of-pages" required />
+        <form action="" method="post">
+            <input id="book-name" type="text" placeholder="Book Name" name="book-title" minlength="2" required>
+            <input id="author" type="text" placeholder="Author" name="book-author" minlength="2" required>
+            <input id="numOfPages" type="number" placeholder="Pages" name="number-of-pages" required>
             <div class="checkbox-for-book">
                 <label for="book-read">Have you finished the book?</label>
-                <input type="checkbox" id="book-read" name="has-book-been-read" value="read" required />
+                <input type="checkbox" id="book-read" name="has-book-been-read" value="read" />
             </div>
-            <button class="book-submit btn">Submit</button>
+            <button type="submit" class="book-submit btn">Submit</button>
         </form>
     </div>
 </body>
