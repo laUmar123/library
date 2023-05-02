@@ -77,6 +77,30 @@ addBookBtn.addEventListener('click', function (e) {
 
 //when the user presses submit in the "add a book" modal window it adds the book to the webpage
 bookModalSubmitBtn.addEventListener('click', function (e) {
+    if (bookTitle.validity.valueMissing) {
+        bookTitle.setCustomValidity('Please enter the book title');
+        bookTitle.style.border = '2px solid red';
+        return;
+    } else {
+        bookTitle.setCustomValidity('');
+        bookTitle.style.border = '2px solid black';
+    }
+    if (bookAuthor.validity.valueMissing) {
+        bookAuthor.setCustomValidity('Please enter the book\s author');
+        bookAuthor.style.border = '2px solid red';
+        return;
+    } else {
+        bookAuthor.setCustomValidity('');
+        bookAuthor.style.border = '2px solid black';
+    }
+    if (numberOfPages.validity.valueMissing) {
+        numberOfPages.setCustomValidity('Please enter the book\s author');
+        numberOfPages.style.border = '2px solid red';
+        return;
+    } else {
+        numberOfPages.setCustomValidity('');
+        numberOfPages.style.border = '2px solid black';
+    }
     //gets the user's input
     let title = bookTitle.value;
     let author = bookAuthor.value;
